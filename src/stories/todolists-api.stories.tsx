@@ -49,8 +49,8 @@ export const DeleteTodolist = () => {
 export const UpdateTodolist = () => {
   let [state, setState] = useState<any>(null);
 
-  let todolistId = "e0a05a48-111c-482d-a516-a93d19199b1f";
-  let newTodolistTitle = "New Todolist Title";
+  let todolistId = "e7e83f2b-5b66-48bf-8b2c-469a8a65a6d8";
+  let newTodolistTitle = "What to learn ";
 
   useEffect(() => {
     todolistAPI.updateTodolist(todolistId, newTodolistTitle).then((res) => {

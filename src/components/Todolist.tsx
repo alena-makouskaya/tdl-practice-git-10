@@ -1,11 +1,13 @@
 // @flow
 import * as React from "react";
-import { KeyboardEvent, useCallback } from "react";
+import { KeyboardEvent, useCallback, useEffect } from "react";
 import { AddItemForm } from "./AddItemForm";
 import { EditableSpan } from "./EditableSpan";
 import { Task } from "./Task";
 import { TaskStatuses, TaskType } from "../api/todolists-api";
 import { FilterValueType } from "../state/todolists-reducer";
+import { useAppDispatch } from "../app/store";
+import { fetchTasksTC } from "../state/tasks-reducer";
 
 type TodolistPropsType = {
   id: string;
@@ -29,6 +31,7 @@ type TodolistPropsType = {
 
 export const Todolist = React.memo((props: TodolistPropsType) => {
   console.log("Todolist is called");
+
   const {
     id,
     title,
@@ -42,6 +45,13 @@ export const Todolist = React.memo((props: TodolistPropsType) => {
     editTaskTitle,
     editTodolistTitle,
   } = props;
+
+  let dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTasksTC(id));
+    // fetchTodolistsThunk(dispatch);
+  }, []);
 
   const addTaskHandler = useCallback(
     (title: string) => {
