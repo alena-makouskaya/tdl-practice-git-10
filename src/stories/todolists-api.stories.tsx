@@ -80,14 +80,9 @@ export const GetTasks = () => {
     const [todolistId, setTodolistId] = useState<string>("");
   
     const deletetask = () => {
-      const todolistId = "dbbba888-aa88-409b-a914-f23b662ad00e";
-      const taskId = "";
-  
-      useEffect(() => {
-        todolistAPI.deleteTask(todolistId, taskId).then((res) => {
-          setState(res.data);
-        });
-      }, []);
+      todolistAPI.deleteTask(todolistId, taskId).then((res) => {
+        setState(res.data);
+      });
     };
   
     return (
