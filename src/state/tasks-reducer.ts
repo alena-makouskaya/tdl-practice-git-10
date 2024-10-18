@@ -2,18 +2,18 @@ import {
   addTodolistAC,
   AddTodolistActionType,
   RemoveTodolistActionType,
-  todolistId1,
-  todolistId2,
+
 } from "./todolists-reducer";
 import { v1 } from "uuid";
 import { TasksStateType } from "../AppWithRedux";
 import { title } from "process";
+import { TaskPriorities, TaskStatuses } from "../api/todolists-api";
 
 export type ChangeTaskStatusActionType = {
   type: "CHANGE-TASK-STATUS";
   todolistId: string;
   taskId: string;
-  isDone: boolean;
+  status: TaskStatuses;
 };
 
 export type EditTaskTitleActionType = {
@@ -65,9 +65,16 @@ export const tasksReducer = (
 
       let newTasks = [
         {
+          todoListId: action.todolistId,
           id: v1(),
           title: action.title,
-          isDone: false,
+          status: TaskStatuses.New,
+          description: '',
+          priority: TaskPriorities.Low,
+          startDate: "",
+          deadline: "",
+          order: 0,
+          addedDate: "",
         },
         ...tasksInTodolist,
       ];
@@ -90,7 +97,7 @@ export const tasksReducer = (
       return {
         ...state,
         [action.todolistId]: state[action.todolistId].map((task) =>
-          task.id === action.taskId ? { ...task, isDone: action.isDone } : task
+          task.id === action.taskId ? { ...task, status: action.status } : task
         ),
       };
     }
@@ -152,12 +159,12 @@ export const EditTaskTitleAC = (
 export const ChangeTaskStatusAC = (
   todolistId: string,
   taskId: string,
-  isDone: boolean
+  status: TaskStatuses
 ): ChangeTaskStatusActionType => {
   return {
     type: "CHANGE-TASK-STATUS",
     todolistId,
     taskId,
-    isDone,
+    status,
   };
 };

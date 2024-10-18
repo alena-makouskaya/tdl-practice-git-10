@@ -1,6 +1,8 @@
 import { title } from "process";
-import { FilterValueType, TodolistProps } from "../AppWithRedux";
 import { v1 } from "uuid";
+import { TodolistType } from "../api/todolists-api";
+
+export type FilterValueType = "all" | "active" | "completed";
 
 export type ChangeTodolistFilterActionType = {
   type: "CHANGE-TODOLIST-FILTER";
@@ -28,20 +30,19 @@ export type RemoveTodolistActionType = {
 export type ActionType =
   | RemoveTodolistActionType
   | AddTodolistActionType
-  | EditTodolistTitleActionType | ChangeTodolistFilterActionType;
+  | EditTodolistTitleActionType
+  | ChangeTodolistFilterActionType;
 
+export type TodolistDomainType = TodolistType & {
+  filter: FilterValueType;
+};
 
-  export let todolistId1 = v1();
-  export let todolistId2 = v1();
-
-  let initialState: TodolistProps[] = [
-
-  ]
+let initialState: TodolistDomainType[] = [];
 
 export const todolistsReducer = (
-  state: TodolistProps[] = initialState,
+  state: TodolistDomainType[] = initialState,
   action: ActionType
-): TodolistProps[] => {
+): TodolistDomainType[] => {
   switch (action.type) {
     case "REMOVE-TODOLIST": {
       return state.filter((tl) => tl.id !== action.todolistId);
@@ -53,6 +54,8 @@ export const todolistsReducer = (
           id: action.todolistId,
           title: action.title,
           filter: "all",
+          addedDate: "",
+          order: 0,
         },
         ...state,
       ];
@@ -65,22 +68,21 @@ export const todolistsReducer = (
         todolist.title = action.title;
       }
 
-      return  [...state ];
+      return [...state];
     }
 
-
     case "CHANGE-TODOLIST-FILTER": {
-        let todolist = state.find((tl) => tl.id === action.todolistId);
+      let todolist = state.find((tl) => tl.id === action.todolistId);
 
-        if (todolist) {
-          todolist.filter = action.filter;
-        }
-  
-        return  [...state ];
+      if (todolist) {
+        todolist.filter = action.filter;
+      }
+
+      return [...state];
     }
 
     default:
-      return state
+      return state;
   }
 };
 
