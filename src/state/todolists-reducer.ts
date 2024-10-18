@@ -1,3 +1,4 @@
+
 import { title } from "process";
 import { v1 } from "uuid";
 import { todolistAPI, TodolistType } from "../api/todolists-api";
@@ -19,8 +20,7 @@ export type EditTodolistTitleActionType = {
 
 export type AddTodolistActionType = {
   type: "ADD-TODOLIST";
-  todolistId: string;
-  title: string;
+  todolist: TodolistType
 };
 
 export type RemoveTodolistActionType = {
@@ -56,14 +56,14 @@ export const todolistsReducer = (
     }
 
     case "ADD-TODOLIST": {
+
+      const newTodolist: TodolistDomainType = {
+        ...action.todolist,
+        filter: "all"
+      }
+
       return [
-        {
-          id: action.todolistId,
-          title: action.title,
-          filter: "all",
-          addedDate: "",
-          order: 0,
-        },
+        newTodolist,
         ...state,
       ];
     }
@@ -111,11 +111,10 @@ export const removeTodolistAC = (
   };
 };
 
-export const addTodolistAC = (title: string): AddTodolistActionType => {
+export const addTodolistAC = (todolist: TodolistType): AddTodolistActionType => {
   return {
     type: "ADD-TODOLIST",
-    todolistId: v1(),
-    title,
+    todolist
   };
 };
 
@@ -157,3 +156,35 @@ export const fetchTodolistsTC = () => {
     });
   };
 };
+
+export const removeTodolistTC = (todolistId: string) => {
+  return (dispatch: Dispatch) => {
+    todolistAPI.deleteTodolist(todolistId).then((res) => {
+      dispatch(removeTodolistAC(todolistId));
+    });
+  };
+};
+
+export const addTodolistTC = (title: string) => {
+  return (dispatch: Dispatch) => {
+    todolistAPI.createTodolist(title).then((res) => {
+      dispatch(addTodolistAC(res.data.data.item));
+    });
+  };
+};
+
+export const changeTodolistTitleTC = (todolistId: string, title: string) => {
+  return (dispatch: Dispatch) => {
+    todolistAPI.updateTodolist(todolistId, title).then((res) => {
+      dispatch(editTodolistTitleAC(todolistId, title));
+    });
+  };
+};
+
+// export const changeTodolistFilterTC = (todolistId: string, filter: FilterValueType) => {
+//   return (dispatch: Dispatch) => {
+//     todolistAPI.change(todolistId, title).then((res) => {
+//       dispatch(editTodolistTitleAC(todolistId, title));
+//     });
+//   };
+// };

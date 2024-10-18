@@ -52,7 +52,7 @@ type GetTasksResponse = {
 export type UpdateTaskModelType = {
   title: string;
   description: string;
-  completed: boolean;
+  // completed: boolean;
   status: number;
   priority: number;
   startDate: string;
@@ -104,7 +104,7 @@ export const todolistAPI = {
   },
 
   createTask(todolistId: string, title: string) {
-    return instance.post<ResponseType<TaskType>>(
+    return instance.post<ResponseType<{item: TaskType}>>(
       `todo-lists/${todolistId}/tasks/`,
       { title: title }
     );
@@ -117,3 +117,4 @@ export const todolistAPI = {
     );
   },
 };
+

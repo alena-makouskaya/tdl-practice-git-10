@@ -181,7 +181,7 @@ export const UpdateTask = () => {
         priority: priority,
         startDate: "",
         deadline: "",
-        completed: true,
+        // completed: true,
       })
       .then((res) => {
         setState(res.data);
