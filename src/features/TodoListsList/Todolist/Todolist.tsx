@@ -1,13 +1,13 @@
 // @flow
 import * as React from "react";
 import { KeyboardEvent, useCallback, useEffect } from "react";
-import { AddItemForm } from "./AddItemForm";
-import { EditableSpan } from "./EditableSpan";
-import { Task } from "./Task";
-import { TaskStatuses, TaskType } from "../api/todolists-api";
-import { FilterValueType } from "../state/todolists-reducer";
-import { useAppDispatch } from "../app/store";
-import { fetchTasksTC } from "../state/tasks-reducer";
+import { AddItemForm } from "../../../components/AddItemForm";
+import { EditableSpan } from "../../../components/EditableSpan";
+import { Task } from "./Task/Task";
+import { TaskStatuses, TaskType } from "../../../api/todolists-api";
+import { FilterValueType } from "../../../state/todolists-reducer";
+import { useAppDispatch } from "../../../app/store";
+import { fetchTasksTC } from "../../../state/tasks-reducer";
 
 type TodolistPropsType = {
   id: string;

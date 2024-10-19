@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
-import { EditableSpan } from "./EditableSpan";
+import { EditableSpan } from "../../../../components/EditableSpan";
 import { useCallback } from "react";
-import { TaskStatuses, TaskType } from "../api/todolists-api";
+import { TaskStatuses, TaskType } from "../../../../api/todolists-api";
 type Props = {
   todolistId: string;
   task: TaskType;
