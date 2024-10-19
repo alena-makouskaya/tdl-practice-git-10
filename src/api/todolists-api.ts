@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 const settings = {
@@ -23,20 +22,40 @@ export const todolistAPI = {
     return instance.delete<ResponseType>(`todo-lists/${todolistId}`);
   },
 
-  createTodolist(title: string){
-    return instance.post<ResponseType<{item: TodolistType}>>(`todo-lists`, {title: title});
+  createTodolist(title: string) {
+    return instance.post<ResponseType<{ item: TodolistType }>>(`todo-lists`, {
+      title: title,
+    });
   },
 
-  updateTodolist(todolistId: string, title: string){
-    return instance.put<ResponseType>(`todo-lists/${todolistId}`, {title: title});
+  updateTodolist(todolistId: string, title: string) {
+    return instance.put<ResponseType>(`todo-lists/${todolistId}`, {
+      title: title,
+    });
   },
 
-  getTasks(todolistId: string){
+  getTasks(todolistId: string) {
     return instance.get<GetTasksResponse>(`todo-lists/${todolistId}/tasks`);
   },
 
-  deleteTask(todolistId: string, taskId: string,){
-    return instance.get<ResponseType<{}>>(`todo-lists/${todolistId}/tasks/${taskId}`);
+  deleteTask(todolistId: string, taskId: string) {
+    return instance.delete<ResponseType>(
+      `todo-lists/${todolistId}/tasks/${taskId}`
+    );
+  },
+
+  createTask(todolistId: string, title: string) {
+    return instance.post<ResponseType<{ item: TaskType }>>(
+      `todo-lists/${todolistId}/tasks`,
+      { title: title }
+    );
+  },
+
+  updateTask(todolistId: string, taskId: string, model: UpdateTaskModelType) {
+    return instance.put<ResponseType>(
+      `todo-lists/${todolistId}/tasks/${taskId}`,
+      model
+    );
   },
 };
 
@@ -49,10 +68,10 @@ export type TodolistType = {
 };
 
 export type ResponseType<D = {}> = {
-    resultCode: number;
-    messages: Array<string>;
-    data: D;
-}
+  resultCode: number;
+  messages: Array<string>;
+  data: D;
+};
 
 type GetTasksResponse = {
   error: string | null;
