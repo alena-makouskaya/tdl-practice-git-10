@@ -1,21 +1,25 @@
 import { v1 } from "uuid";
-import { FilterValueType, TodolistProps } from "../AppWithRedux";
-import { addTodolistAC, changeTodolistFilterAC, editTodolistTitleAC, removeTodolistAC, todolistsReducer } from "./todolists-reducer";
+import { FilterValueType } from "../AppWithRedux";
+import { addTodolistAC, changeTodolistFilterAC, editTodolistTitleAC, removeTodolistAC, TodolistDomainType, todolistsReducer } from "./todolists-reducer";
 
 test.skip("todolist should be removed", () => {
   let todolistId1 = v1();
   let todolistId2 = v1();
 
-  let initialState: TodolistProps[] = [
+  let initialState: TodolistDomainType[] = [
     {
       id: todolistId1,
       title: "What to learn?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
     {
       id: todolistId2,
       title: "What to buy?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
   ];
 
@@ -31,16 +35,20 @@ test.skip("todolist should be added", () => {
   let todolistId1 = v1();
   let todolistId2 = v1();
 
-  let initialState: TodolistProps[] = [
+  let initialState: TodolistDomainType[] = [
     {
       id: todolistId1,
       title: "What to learn?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
     {
       id: todolistId2,
       title: "What to buy?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
   ];
 
@@ -58,16 +66,20 @@ test.skip("todolist title should be edited", () => {
   let todolistId1 = v1();
   let todolistId2 = v1();
 
-  let initialState: TodolistProps[] = [
+  let initialState: TodolistDomainType[] = [
     {
       id: todolistId1,
       title: "What to learn?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
     {
       id: todolistId2,
       title: "What to buy?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
   ];
 
@@ -85,16 +97,20 @@ test.skip("todolist filter should be changed", () => {
   let todolistId1 = v1();
   let todolistId2 = v1();
 
-  let initialState: TodolistProps[] = [
+  let initialState: TodolistDomainType[] = [
     {
       id: todolistId1,
       title: "What to learn?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
     {
       id: todolistId2,
       title: "What to buy?",
       filter: "all",
+      addedDate: "",
+      order: 0,
     },
   ];
 

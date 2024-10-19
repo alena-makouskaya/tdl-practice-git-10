@@ -1,18 +1,18 @@
 // @flow
 import * as React from "react";
-import { TasksPropsType } from "./Todolist";
 import { EditableSpan } from "./EditableSpan";
 import { useCallback } from "react";
+import { TaskStatuses, TaskType } from "../api/todolists-api";
 
 type TaskPropsType = {
   todolistId: string;
-  task: TasksPropsType;
+  task: TaskType;
 
   removeTask: (todolistId: string, taskId: string) => void;
   changeTaskStatus: (
     todolistId: string,
     taskId: string,
-    isDone: boolean
+    status: TaskStatuses
   ) => void;
   editTaskTitle: (todolistId: string, taskId: string, title: string) => void;
 };
@@ -26,7 +26,10 @@ export const Task = React.memo(({
     console.log(`Task - ${task.id} is called`);
 
   const changeTaskStatusHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    changeTaskStatus(todolistId, task.id, e.currentTarget.checked);
+
+    let taskStatus = e.currentTarget.checked
+
+    changeTaskStatus(todolistId, task.id, taskStatus ? TaskStatuses.Completed : TaskStatuses.New);
   };
 
   const editTaskTitleHandler = useCallback(
@@ -44,7 +47,7 @@ export const Task = React.memo(({
     <li>
       <input
         type="checkbox"
-        checked={task.isDone}
+        checked={task.status === TaskStatuses.Completed ? true : false }
         onChange={changeTaskStatusHandler}
       />
       <EditableSpan title={task.title} callBack={editTaskTitleHandler} />

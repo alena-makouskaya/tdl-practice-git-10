@@ -1,3 +1,4 @@
+import { TaskPriorities, TaskStatuses } from "../api/todolists-api";
 import { TasksStateType } from "../AppWithRedux";
 import { AddTaskAC, ChangeTaskStatusAC, EditTaskTitleAC, RemoveTaskAC, tasksReducer } from "./tasks-reducer";
 import { addTodolistAC } from "./todolists-reducer";
@@ -8,34 +9,76 @@ test.skip("task shoud be removed", () => {
       {
         id: "1",
         title: "HTML",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "2",
         title: "CSS",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "3",
         title: "JS",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
     ],
     todolistId2: [
       {
         id: "1",
         title: "Milk",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "2",
         title: "Bread",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "3",
         title: "Juce",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
     ],
   };
@@ -56,34 +99,76 @@ test.skip("new task shoud be added", () => {
       {
         id: "1",
         title: "HTML",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "2",
         title: "CSS",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "3",
         title: "JS",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
     ],
     todolistId2: [
       {
         id: "1",
         title: "Milk",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "2",
         title: "Bread",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "3",
         title: "Juce",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
     ],
   };
@@ -105,34 +190,76 @@ test.skip("task title shoud be edited", () => {
       {
         id: "1",
         title: "HTML",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "2",
         title: "CSS",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "3",
         title: "JS",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
     ],
     todolistId2: [
       {
         id: "1",
         title: "Milk",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "2",
         title: "Bread",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "3",
         title: "Juce",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
     ],
   };
@@ -154,44 +281,86 @@ test.skip("task status shoud be changed", () => {
       {
         id: "1",
         title: "HTML",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "2",
         title: "CSS",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "3",
         title: "JS",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
     ],
     todolistId2: [
       {
         id: "1",
         title: "Milk",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "2",
         title: "Bread",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "3",
         title: "Juce",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
     ],
   };
 
-  let action = ChangeTaskStatusAC("todolistId1", "1", false);
+  let action = ChangeTaskStatusAC("todolistId1", "1", TaskStatuses.InProgress);
 
   let endState = tasksReducer(initialState, action);
 
   expect(endState["todolistId1"].length).toBe(3);
-  expect(endState["todolistId1"][0].isDone).toBe(false);
+  expect(endState["todolistId1"][0].status).toBe(TaskStatuses.InProgress);
 
 });
 
@@ -201,34 +370,76 @@ test.skip("new proprty with new array should be added when new todolist is added
       {
         id: "1",
         title: "HTML",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "2",
         title: "CSS",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
       {
         id: "3",
         title: "JS",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId1"
       },
     ],
     todolistId2: [
       {
         id: "1",
         title: "Milk",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "2",
         title: "Bread",
-        isDone: true,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
       {
         id: "3",
         title: "Juce",
-        isDone: false,
+        status: TaskStatuses.New,
+        description: '',
+        priority: TaskPriorities.Low,
+        startDate: "",
+        deadline: "",
+        order: 0,
+        addedDate: "",
+        todoListId: "todolistId2"
       },
     ],
   };
